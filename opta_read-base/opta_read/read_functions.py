@@ -5,7 +5,9 @@ def leer_opta_f27(xml_file):
     Input:
     OPTA F27 xml file
 
-
+    Output:
+    Dataframe with the different passers, mean coordinates of passer's position,
+    distinct receivers and number of successful passes
     '''
 
     import xml.etree.ElementTree as ET
