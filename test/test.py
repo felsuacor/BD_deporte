@@ -142,4 +142,4 @@ def possesion_evolution(df,animated=True):
 
     plt.show()
 
-possesion_evolution(possesion,False)
+possesion_evolution(possesion)
