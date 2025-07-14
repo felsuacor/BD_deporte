@@ -51,7 +51,7 @@ class F30:
 
         return players_stats
     
-    def compare_players(self, df, players, stats, color_player_1, color_player_2):
+    def plot_compare_players(self, df, players, stats, color_player_1, color_player_2):
 
         '''
         Function that returns a spider-plot comparing two players in the stats we select.

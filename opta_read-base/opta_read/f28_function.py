@@ -53,7 +53,7 @@ class F28:
 
         return poss
     
-    def pitch_possesion_evolution(self, df, color_team1="green", color_team2="blue", animated=True):
+    def plot_pitch_possesion_evolution(self, df, color_team1="green", color_team2="blue", animated=True):
         '''
         Function that represents possesion evolution in a Opta Pitch.
         If animated=True, it will show how possesion develops over the time intervals of the match
@@ -136,7 +136,7 @@ class F28:
 
         plt.show()
 
-    def line_possesion_evolution(self,df):
+    def plot_line_possesion_evolution(self,df):
         '''
         Function that represents possesion evolution in a line plot
         '''
