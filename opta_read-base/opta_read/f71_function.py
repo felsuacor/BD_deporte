@@ -87,7 +87,7 @@ class F71:
         ax.legend()
         plt.show()
     
-    def plot_defensive_actions(self, team, player=None):
+    def plot_defensive_actions(self,df, team, player=None):
         '''
         Function that represents defensive actions for a single team or a list of players
 
