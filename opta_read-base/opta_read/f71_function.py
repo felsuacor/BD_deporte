@@ -143,7 +143,7 @@ class F71:
         else:
             plt.title(f"Defensive stats of {' & '.join(player)}")
 
-        ax.set( xlim=[-50, 150], ylim=[-50, 150],xlabel='Possesion')
+        ax.set( xlim=[-30, 130], ylim=[-30, 130],xlabel='Possesion')
 
         # Create custom legend for markers
         marker_legend=[]
