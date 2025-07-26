@@ -7,7 +7,79 @@ from matplotlib.lines import Line2D
 from matplotlib import colormaps as cm
 from opta_read.opta_pitch import *
 
-    
+def plot_defensive_actions(df, team, player=None):
+        '''
+        Function that represents defensive actions for a single team or a list of players
+
+        '''
+        
+        # Filter dataframe by team selected and defensive coverage actions
+        filtered_df=df[(df["Team"]==team) & (df["Defensive Stat"]!="DefensiveCoverage")]
+        filtered_df=filtered_df[["Player","Defensive Stat","Coords of Defensive Actions"]]
+        if player != None: 
+            filtered_df=filtered_df[filtered_df["Player"].isin(player)]
+        filtered_df.reset_index(inplace=True, drop=True)
+
+        # Get list of different stats
+        stats_unique=filtered_df["Defensive Stat"].unique().tolist()
+
+        # List of possible matplotlib markers. We select only the amount we need
+        markers_list=list(Line2D.markers.keys())
+        markers_list.remove(",") # Remove pixel representation, as it's very small
+        markers_list=markers_list[:len(stats_unique)]
+
+        # Create dictionary that pairs a stat and a marker
+        stat_marker=dict(zip(stats_unique, markers_list))
+
+        # Generate a color map based on number of distinct players
+        players_unique= filtered_df["Player"].unique().tolist()
+        colors = cm['tab10'].resampled(len(players_unique))
+
+        fig, ax = plt.subplots()
+
+        # Add opta pitch
+        opta_pitch(ax)
+
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+        player_legend=[]
+        # Plot defensive coverage polygons
+        for i in range(len(players_unique)):
+            player_df=filtered_df[filtered_df["Player"]==players_unique[i]]
+            # Create custom legend for players
+            player_legend.append(Line2D([0], [0], color=colors(i), label=players_unique[i]))
+
+            for k in range(len(player_df)):
+                x,y=zip(*player_df.iloc[k,2])
+                plt.scatter([float(x_coord) for x_coord in list(x)],
+                        [float(y_coord) for y_coord in list(y)],
+                        color=colors(i),
+                        marker=stat_marker[player_df.iloc[k,1]])
+                
+
+        if player==None:    
+            plt.title(f"Defensive stats of {team}'s players")
+        else:
+            plt.title(f"Defensive stats of {' & '.join(player)}")
+
+        ax.set( xlim=[-30, 130], ylim=[-30, 130],xlabel='Possesion')
+
+        # Create custom legend for markers
+        marker_legend=[]
+        for key,value in stat_marker.items():
+            marker_legend.append(Line2D([0], [0], marker=value, color='w', label=key, markerfacecolor='gray', markersize=10))
+
+        # Add first legend (markers)
+        first_legend = plt.legend(handles=player_legend, title='Players', loc='upper center',ncols=5,fontsize="small")
+
+        # # Add second legend (colors)
+        second_legend = plt.legend(handles=marker_legend, title='Defensive Action', loc='lower center', ncols=5)
+
+        # Add the first legend back manually
+        plt.gca().add_artist(first_legend)
+        plt.show()
+
 def defensive_stats_funct(path):
     '''
     Function that returns defensive stats of a match
@@ -78,8 +150,12 @@ def defensive_stats_funct(path):
 
         ax.legend()
         plt.show()
-    df.plot_defensive_coverages=plot_defensive_coverages
 
+    def test(team, player=None):
+        return plot_defensive_actions(df, team, player)
+
+    df.plot_defensive_coverages=plot_defensive_coverages
+    df.plot_defensive_actions=test
     return df
 
 

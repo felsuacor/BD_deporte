@@ -12,11 +12,8 @@ class F71_test:
     def __init__(self, path):
         self.path=path
     
-    def defensive_stats_aux(self):
+    def defensive_stats(self):
         return defensive_stats_funct(path=self.path)
-        # return df.get_dataframe()
-        
-        # self.defensive_stats.plot_defensive_actions=self.plot_defensive_actions
 
     
 

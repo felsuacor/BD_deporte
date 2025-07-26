@@ -32,9 +32,9 @@ from opta_read.f71_function_test import F71_test
 x=F71_test('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/Liga Primera 23/f71/f71-23-2022-2301587-defcoverage.xml')
 # print(x.path)
 
-test=x.defensive_stats_aux()
+test=x.defensive_stats()
 print(test)
-test.plot_defensive_coverages(team="Mallorca")
+test.plot_defensive_actions(team="Mallorca")
 
 
 # test.plot_defensive_coverages(team="Mallorca")
