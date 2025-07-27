@@ -1,7 +1,5 @@
 import xml.etree.ElementTree as ET
 import pandas as pd
-import plotly.graph_objects as go
-from sklearn.preprocessing import MinMaxScaler
 from opta_read.auxiliares.f30_aux_funct import players_stats_funct
 
 class F30:
