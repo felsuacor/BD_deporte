@@ -9,7 +9,7 @@ class F27:
     def __init__(self, path):
         self.path=path
 
-    def mean_position_opta_f27(self):
+    def mean_position(self):
 
         ''''
         Function that returns a dataframe with all players found in a F27 file, together with
@@ -98,33 +98,33 @@ class F27:
     
             
     
-    def plot_pass_meanpos(self,mean_position, pass_matrix, pass_color="red",show_passes=True):
+    def plot_pass_meanpos(self,mean_position_df, pass_matrix_df, pass_color="red",show_passes=True):
 
-        if 'Number of Succesful Passes' not in list(pass_matrix.columns):
+        if 'Number of Succesful Passes' not in list(pass_matrix_df.columns):
         # Raises an error if the input is a pivot table (not contains Number of Succesful Passes column)    
             raise ValueError("Input appears to be a pivot table. Input needs to be a regular dataframe.")
         
         fig, ax = plt.subplots(figsize=(18,14))
         
-        max_num_pases=pass_matrix['Number of Succesful Passes'].max()
+        max_num_pases=pass_matrix_df['Number of Succesful Passes'].max()
         # Flechas con los pases entre los jugadores con Plotter(passer, receiver, number)
         if show_passes==True:
-            for i in range(len(pass_matrix)):
-                Plotter(mean_position, pass_matrix.iloc[i,0], pass_matrix.iloc[i,1], pass_matrix.iloc[i,2], max_num_pases, pass_color)
+            for i in range(len(pass_matrix_df)):
+                Plotter(mean_position_df, pass_matrix_df.iloc[i,0], pass_matrix_df.iloc[i,1], pass_matrix_df.iloc[i,2], max_num_pases, pass_color)
 
         # Posición Media Scatter Puntos con color en función de su demarcación
-        for i in range(len(mean_position)):
-            ax.text(mean_position.iloc[i,1], mean_position.iloc[i,2], s = mean_position.iloc[i,0], rotation = 45, size = 10)
-            if mean_position.iloc[i,3] == "Goalkeeper":
-                plt.scatter(x=mean_position.iloc[i,1], y = mean_position.iloc[i,2], s = mean_position.iloc[i,4]*40, zorder = 1, color = "blue")
-            if mean_position.iloc[i,3] == "Forward":
-                plt.scatter(x=mean_position.iloc[i,1], y = mean_position.iloc[i,2], s = mean_position.iloc[i,4]*40, zorder = 1, color = "green")
-            if mean_position.iloc[i,3] == "Midfielder":
-                plt.scatter(x=mean_position.iloc[i,1], y = mean_position.iloc[i,2], s = mean_position.iloc[i,4]*40, zorder = 1, color = "grey")
-            if mean_position.iloc[i,3] == "Defender":
-                plt.scatter(x=mean_position.iloc[i,1], y = mean_position.iloc[i,2], s = mean_position.iloc[i,4]*40, zorder = 1, color = "orange")
-            if mean_position.iloc[i,3] == "Substitute":
-                plt.scatter(x=mean_position.iloc[i,1], y = mean_position.iloc[i,2], s = mean_position.iloc[i,4]*40, zorder = 1, color = "yellow")
+        for i in range(len(mean_position_df)):
+            ax.text(mean_position_df.iloc[i,1], mean_position_df.iloc[i,2], s = mean_position_df.iloc[i,0], rotation = 45, size = 10)
+            if mean_position_df.iloc[i,3] == "Goalkeeper":
+                plt.scatter(x=mean_position_df.iloc[i,1], y = mean_position_df.iloc[i,2], s = mean_position_df.iloc[i,4]*40, zorder = 1, color = "blue")
+            if mean_position_df.iloc[i,3] == "Forward":
+                plt.scatter(x=mean_position_df.iloc[i,1], y = mean_position_df.iloc[i,2], s = mean_position_df.iloc[i,4]*40, zorder = 1, color = "green")
+            if mean_position_df.iloc[i,3] == "Midfielder":
+                plt.scatter(x=mean_position_df.iloc[i,1], y = mean_position_df.iloc[i,2], s = mean_position_df.iloc[i,4]*40, zorder = 1, color = "grey")
+            if mean_position_df.iloc[i,3] == "Defender":
+                plt.scatter(x=mean_position_df.iloc[i,1], y = mean_position_df.iloc[i,2], s = mean_position_df.iloc[i,4]*40, zorder = 1, color = "orange")
+            if mean_position_df.iloc[i,3] == "Substitute":
+                plt.scatter(x=mean_position_df.iloc[i,1], y = mean_position_df.iloc[i,2], s = mean_position_df.iloc[i,4]*40, zorder = 1, color = "yellow")
 
 
         opta_pitch(ax)
