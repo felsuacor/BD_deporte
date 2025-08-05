@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
-from opta_read.opta_pitch import *
+from opta_read.auxiliares.opta_pitch import *
 
 class F27:
 
