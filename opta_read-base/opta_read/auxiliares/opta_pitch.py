@@ -52,3 +52,37 @@ def opta_pitch(ax):
     # Draw Arcs
     ax.add_patch(leftArc)
     ax.add_patch(rightArc)
+
+
+def Plotter(mean_position, passer, receiver, number, num_max_pases, pass_color="red"):
+
+        '''
+        Function that plots a line between the mean position of passer and receiver
+        where the width of that line is based on the number of passes that 
+        take place between those two players.
+
+        Input:
+        * mean_position: dataframe with each player and its mean position
+        * passer: name of the passer
+        * receiver: name of the receiver 
+        * number: amount of passes between passer and receiver
+        * num_max_pases: maximum amount of passes between two players considering the whole team to calculate it.
+        * pass_color: color used to represent passes in the plot
+        
+        '''
+
+        mp_coords=mean_position[['Passer','x','y']].drop_duplicates()
+        mp_coords=mp_coords.set_index("Passer")
+
+        passer_loc = [[float(mp_coords.loc[passer,][0]),float(mp_coords.loc[passer,][1])]]
+        receiver_loc = [[float(mp_coords.loc[receiver,][0]),float(mp_coords.loc[receiver,][1])]]
+
+        for i,j in zip(passer_loc, receiver_loc):
+            plt.arrow(x = i[0],
+                    y = i[1],
+                    dx = (j[0]-i[0]),
+                    dy = (j[1]-i[1]),
+                    linewidth = int(number),
+                    alpha = (int(number)/num_max_pases), # propiedad transparencia que va de 0 a 1
+                    length_includes_head=True,
+                    color = pass_color)
