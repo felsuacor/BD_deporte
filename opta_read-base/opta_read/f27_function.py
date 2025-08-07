@@ -13,7 +13,7 @@ class F27:
 
         ''''
         Function that returns a dataframe with all players found in a F27 file, together with
-        its mean position based on contacts with ball and tje number of sucessful passes
+        its mean position based on contacts with ball and the number of sucessful passes
 
         Input:
         OPTA F27 xml file
@@ -51,10 +51,10 @@ class F27:
         df['y'] = pd.to_numeric(df['y'], errors='coerce')                
         df['PassSuccess'] = df['PassSuccess'].astype(int) 
         
-        return df.sort_values(by=["Position_Passer",'Passer']).reset_index(drop=True)
+        return df.sort_values(by=["Position_Passer",'PassSuccess'],ascending=[True,False]).reset_index(drop=True)
     
     def pass_matrix(self, pivot_table=False, color=False):
-        ''''
+        '''
         Function that returns a dataframe with all players found in a F27 file, together with
         its mean position based on contacts with ball and the number of sucessful passes
 
