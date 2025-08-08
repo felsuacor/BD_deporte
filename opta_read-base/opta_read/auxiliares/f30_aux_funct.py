@@ -2,37 +2,9 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import plotly.graph_objects as go
 from sklearn.preprocessing import MinMaxScaler
-
+import os
 
     
-def players_stats_funct(path):
-    '''
-    Function that returns season stats of all players of a team
-    '''
-    players_dict={}
-    player_stats={}
-    file=ET.parse(path)
-
-    root=file.getroot()
-    for player in root.findall(".//Player"):
-        first_name=player.attrib.get("first_name")
-        last_name=player.attrib.get("last_name")
-        full_name=first_name + " " + last_name
-        for stat in player:
-            attribute=stat.attrib.get("name")
-            value=stat.text
-            player_stats[attribute] = float(value) 
-        
-        players_dict[full_name]=player_stats
-        player_stats={}
-    
-    players_stats=pd.DataFrame.from_dict(data=players_dict, orient="index")
-
-    def plot_compare_players(players, stats, color_player_1, color_player_2):
-        return compare_players(players_stats, players, stats, color_player_1, color_player_2)
-    player_stats.plot_compare_players=plot_compare_players
-
-    return players_stats
 
 def compare_players(df, players, stats, color_player_1, color_player_2):
 
@@ -47,6 +19,7 @@ def compare_players(df, players, stats, color_player_1, color_player_2):
 
     '''
 
+    ## Normalize data
     df=df[stats]
     scaler = MinMaxScaler()
     df_normalized = pd.DataFrame(scaler.fit_transform(df), columns=df.columns, index=df.index)
@@ -84,4 +57,7 @@ def compare_players(df, players, stats, color_player_1, color_player_2):
         ))
     )
 
-    fig.show()
+    fig.write_html("my_plot.html")
+    import webbrowser
+
+    webbrowser.open("my_plot.html")

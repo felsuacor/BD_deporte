@@ -16,24 +16,26 @@ from opta_read.f28_function import F28
 # x.plot_pass_meanpos(mean_position=m_pos,pass_matrix=pm, pass_color="green")
 
 
-# x=F30('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f30/seasonstats-23-2019-174.xml')
+x=F30('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f30/seasonstats-23-2019-174.xml')
 # team=x.team_stats()
 # # print(team)
 
-# players=x.players_stats()
-# # print(players)
+
+players=x.players_stats()
+# print(players)
+
 
 # ## Following function only works properly in jupyter
-# x.compare_players(players,["Yuri Berchiche Izeta","Ander Capa"] ,["Goals", 'Total Passes', 'Successful Dribbles', 'Total Shots'],"red","green")
+players.plot_compare_players(["Yuri Berchiche Izeta","Ander Capa"] ,["Goals", 'Total Passes', 'Successful Dribbles', 'Total Shots'],"red","green")
 
-x=F28('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f28/f28-23-2019-1074825-eventdetails.xml')
+# x=F28('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f28/f28-23-2019-1074825-eventdetails.xml')
 
-poss=x.get_possesion(possesion_type="TerritorialThird",interval_length=15)
+# poss=x.get_possesion(possesion_type="TerritorialThird",interval_length=15)
 
-# print(poss)
-# poss.plot_pitch_possesion_evolution(animated=False)
+# # print(poss)
+# # poss.plot_pitch_possesion_evolution(animated=False)
 
-poss.plot_line_possesion_evolution()
+# poss.plot_line_possesion_evolution()
 
 # x=F71_test('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/Liga Primera 23/f71/f71-23-2022-2301587-defcoverage.xml')
 # # print(x.path)
