@@ -64,6 +64,12 @@ def defensive_coverages(df,team, players=None):
             filtered_df=filtered_df[filtered_df["Player"].isin(players)]
         filtered_df.reset_index(inplace=True, drop=True)
 
+
+        # Get rival team
+        rival=df[df["Team"]!=team]["Team"].head(1)
+        rival=rival.reset_index(drop=True)
+        rival_name=rival[0]
+
         # Generate a color map based on number of records of filtered df
 
         colors = cm['tab10'].resampled(len(filtered_df))
@@ -83,9 +89,9 @@ def defensive_coverages(df,team, players=None):
             ax.add_patch(rect1)
 
         if players==None:
-            plt.title(f"Defensive coverage of {team}'s players")
+            plt.title(f"Defensive coverage of {team}'s players against {rival_name}")
         else:
-            plt.title(f"Defensive coverage of {' & '.join(players)}")
+            plt.title(f"Defensive coverage of {' & '.join(players)} against {rival_name}")
 
         ax.legend()
         plt.show()
@@ -102,6 +108,12 @@ def defensive_actions(df, team, player=None):
         if player != None: 
             filtered_df=filtered_df[filtered_df["Player"].isin(player)]
         filtered_df.reset_index(inplace=True, drop=True)
+
+        # Get rival team
+        rival=df[df["Team"]!=team]["Team"].head(1)
+        rival=rival.reset_index(drop=True)
+        rival_name=rival[0]
+
 
         # Get list of different stats
         stats_unique=filtered_df["Defensive Stat"].unique().tolist()
@@ -142,9 +154,9 @@ def defensive_actions(df, team, player=None):
                 
 
         if player==None:    
-            plt.title(f"Defensive stats of {team}'s players")
+            plt.title(f"Defensive stats of {team}'s players against {rival_name}")
         else:
-            plt.title(f"Defensive stats of {' & '.join(player)}")
+            plt.title(f"Defensive stats of {' & '.join(player)} against {rival_name}")
 
         ax.set( xlim=[-30, 130], ylim=[-30, 130],xlabel='Possesion')
 

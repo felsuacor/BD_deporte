@@ -57,7 +57,8 @@ def compare_players(df, players, stats, color_player_1, color_player_2):
         ))
     )
 
-    fig.write_html("my_plot.html")
+    fig.write_html("plots/my_plot.html")
     import webbrowser
 
-    webbrowser.open("my_plot.html")
+    file_path = os.path.abspath("plots/my_plot.html")
+    webbrowser.open(f"file://{file_path}")
