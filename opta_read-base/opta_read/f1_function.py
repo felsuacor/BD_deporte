@@ -11,7 +11,7 @@ class F1:
         self.path=path
 
     
-    def results(self, team_difference=False):
+    def results_and_td(self, team_difference=False):
 
         path=self.path
 
@@ -56,13 +56,13 @@ class F1:
                     data.append([season_name,match_day, teams[home_team],score_home,score_away, teams[away_team],result])
 
         if team_difference==True:
-            df=pd.DataFrame(data, columns=["Local","Away","MatchDay","Goals difference"])
+            df=pd.DataFrame(data, columns=["Local","Away","MatchDay","Match Goals Difference"])
             df = df.sort_values(by='MatchDay')
 
             # Agrupamos por pares de equipos y calculamos la suma acumulada
             df['Teams Goal Difference'] = (
                 df
-                .groupby(['Local', 'Away'])['Goals difference']
+                .groupby(['Local', 'Away'])['Match Goals Difference']
                 .cumsum()
             )
             df=df.reset_index(drop=True)
@@ -74,7 +74,7 @@ class F1:
 
     def league_table(self):
         
-        h2h_duels_df=self.results(team_difference=True)
+        h2h_duels_df=self.results_and_td(team_difference=True)
         global_balance_df=global_balance(self.path)
 
         result = pd.DataFrame()

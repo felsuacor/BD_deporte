@@ -5,15 +5,15 @@ from opta_read.f71_function import F71
 from opta_read.f1_function import F1
 
 
-# x=F27('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f27/pass_matrix_23_2019_g1074821_t957.xml')
+x=F27('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f27/pass_matrix_23_2019_g1074821_t957.xml')
 
-# pm=x.pass_matrix(pivot_table=True)
+pm=x.pass_matrix(pivot_table=True)
 
-# # m_pos=x.mean_position()
+# m_pos=x.mean_position()
 
 # print(pm)
 
-# x.plot_pass_meanpos(mean_position=m_pos,pass_matrix=pm, pass_color="green")
+x.plot_pass_meanpos(pass_color="green")
 
 
 # x=F30('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f30/seasonstats-23-2019-174.xml')
@@ -47,7 +47,9 @@ from opta_read.f1_function import F1
 
 # test.plot_defensive_coverages(team="Mallorca", player=["Antonio Raíllo","Copete"])
 
-x=F1('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/Liga Primera 23/f1/srml-23-2022-results.xml')
+# x=F1('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/Liga Primera 23/f1/srml-23-2022-results.xml')
 
-test=x.league_table()
-test.plot_league_table()
+# test=x.league_table()
+# # print(x.league_table())
+
+# test.plot_league_table()
