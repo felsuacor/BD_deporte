@@ -1,55 +1,45 @@
-from opta_read.f27_function import F27
-from opta_read.f30_function import F30
-from opta_read.f28_function import F28
-from opta_read.f71_function import F71
-from opta_read.f1_function import F1
+import pathlib
+from setuptools import find_packages, setup
+
+HERE = pathlib.Path(__file__).parent
+
+VERSION = '0.0.1' 
+PACKAGE_NAME = 'opta_read'  
+AUTHOR = 'Felix Suarez' 
+# AUTHOR_EMAIL = 'fsuarezc10@gmail.com' 
+URL = 'https://github.com/felsuacor/BD_deporte' 
+
+LICENSE = 'MIT' #Tipo de licencia
+DESCRIPTION = 'Librería para leer ficheros de xml de Opta y extraer la información' 
+LONG_DESCRIPTION = (HERE / "README.md").read_text(encoding='utf-8') #Referencia al documento README con una descripción más elaborada
+LONG_DESC_TYPE = "text/markdown"
 
 
-x=F27('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f27/pass_matrix_23_2019_g1074821_t957.xml')
+#Paquetes necesarios para que funcione la libreía. Se instalarán a la vez si no lo tuvieras ya instalado
+INSTALL_REQUIRES = [
+      'pandas',
+      'numpy',
+      'itertools',
+      'xml.etree.ElementTree',
+      'matplotlib',
+      'seaborn',
+      'typing',
+      'networkx',
+      'sklearn',
+      'plotly',
+      'os'
+      ]
 
-pm=x.pass_matrix(pivot_table=True)
-
-# m_pos=x.mean_position()
-
-# print(pm)
-
-x.plot_pass_meanpos(pass_color="green")
-
-
-# x=F30('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f30/seasonstats-23-2019-174.xml')
-# team=x.team_stats()
-# # print(team)
-
-
-# players=x.players_stats()
-# # print(players)
-
-
-# # ## Following function only works properly in jupyter
-# players.plot_compare_players(["Yuri Berchiche Izeta","Ander Capa"] ,["Goals", 'Total Passes', 'Successful Dribbles', 'Total Shots'],"red","green")
-
-# x=F28('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/f28/f28-23-2019-1074825-eventdetails.xml')
-
-# poss=x.get_possesion(possesion_type="TerritorialThird",interval_length=15)
-
-# # print(poss)
-# # poss.plot_pitch_possesion_evolution(animated=False)
-
-# poss.plot_line_possesion_evolution()
-
-# x=F71('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/Liga Primera 23/f71/f71-23-2022-2301587-defcoverage.xml')
-# # # print(x.path)
-
-# test=x.defensive_stats()
-# # print(test)
-# test.plot_defensive_actions(team="Mallorca")
-
-
-# test.plot_defensive_coverages(team="Mallorca", player=["Antonio Raíllo","Copete"])
-
-# x=F1('C:/Users/Felix/Desktop/Máster  BD Deporte/Módulo 7 - Proveedores de Datos Deportivos/Liga Primera 23/f1/srml-23-2022-results.xml')
-
-# test=x.league_table()
-# # print(x.league_table())
-
-# test.plot_league_table()
+setup(
+    name=PACKAGE_NAME,
+    version=VERSION,
+    description=DESCRIPTION,
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type=LONG_DESC_TYPE,
+    author=AUTHOR,
+    url=URL,
+    install_requires=INSTALL_REQUIRES,
+    license=LICENSE,
+    packages=find_packages(),
+    include_package_data=True
+)
