@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import pandas as pd
 
-from opta_read._auxiliares.f27_aux_funct import *
+from opta_read.auxiliares.f27_aux_funct import *
 
 class F27:
 

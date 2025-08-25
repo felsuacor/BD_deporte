@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.1' 
+VERSION = '0.0.1dev3' 
 PACKAGE_NAME = 'opta_read'  
 AUTHOR = 'Felix Suarez' 
 # AUTHOR_EMAIL = 'fsuarezc10@gmail.com' 
@@ -19,15 +19,13 @@ LONG_DESC_TYPE = "text/markdown"
 INSTALL_REQUIRES = [
       'pandas',
       'numpy',
-      'itertools',
-      'xml.etree.ElementTree',
+      'more-itertools',
       'matplotlib',
       'seaborn',
-      'typing',
+      'typing_extensions',
       'networkx',
-      'sklearn',
-      'plotly',
-      'os'
+      'scikit-learn',
+      'plotly'
       ]
 
 setup(

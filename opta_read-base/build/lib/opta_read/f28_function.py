@@ -5,7 +5,7 @@ import matplotlib.patches as patches
 import numpy as np
 from typing import Literal
 
-from opta_read._auxiliares.f28_aux_funct import *
+from opta_read.auxiliares.f28_aux_funct import *
 
 class F28:
 

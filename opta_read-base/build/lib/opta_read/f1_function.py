@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import itertools
 
-from opta_read._auxiliares.f1_aux_funct import *
+from opta_read.auxiliares.f1_aux_funct import *
 
 class F1:
 
