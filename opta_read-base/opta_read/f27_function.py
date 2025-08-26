@@ -48,7 +48,7 @@ class F27:
 
         df['x'] = pd.to_numeric(df['x'], errors='coerce')
         df['y'] = pd.to_numeric(df['y'], errors='coerce')                
-        df['PassSuccess'] = df['PassSuccess'].astype(int) 
+        df['PassSuccess'] = pd.to_numeric(df['PassSuccess'], errors='coerce').fillna(0).astype(int) 
         
         return df.sort_values(by=["Position_Passer",'PassSuccess'],ascending=[True,False]).reset_index(drop=True)
     

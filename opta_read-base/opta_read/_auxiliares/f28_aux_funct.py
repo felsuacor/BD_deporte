@@ -5,7 +5,7 @@ import matplotlib.patches as patches
 import numpy as np
 from typing import Literal
 
-from opta_read.auxiliares.opta_pitch import *
+from opta_read._auxiliares.opta_pitch import *
 import matplotlib.animation as animation
 
 

@@ -5,7 +5,7 @@ import matplotlib.patches as patches
 from matplotlib.lines import Line2D
 
 from matplotlib import colormaps as cm
-from opta_read.auxiliares.opta_pitch import *
+from opta_read._auxiliares.opta_pitch import *
 
 
 

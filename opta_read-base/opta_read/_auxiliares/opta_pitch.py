@@ -74,8 +74,8 @@ def Plotter(mean_position, passer, receiver, number, num_max_pases, pass_color="
         mp_coords=mean_position[['Passer','x','y']].drop_duplicates()
         mp_coords=mp_coords.set_index("Passer")
 
-        passer_loc = [[float(mp_coords.loc[passer,][0]),float(mp_coords.loc[passer,][1])]]
-        receiver_loc = [[float(mp_coords.loc[receiver,][0]),float(mp_coords.loc[receiver,][1])]]
+        passer_loc = [[float(mp_coords.loc[passer].iloc[0]), float(mp_coords.loc[passer].iloc[1])]]
+        receiver_loc = [[float(mp_coords.loc[receiver].iloc[0]), float(mp_coords.loc[receiver].iloc[1])]]
 
         for i,j in zip(passer_loc, receiver_loc):
             plt.arrow(x = i[0],

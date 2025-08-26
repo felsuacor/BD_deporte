@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
-from opta_read.auxiliares.opta_pitch import *
+from opta_read._auxiliares.opta_pitch import *
 
 def pass_meanpos(mean_position_df, pass_matrix_df, pass_color="red",show_passes=True):
 
