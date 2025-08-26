@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.1dev8' 
+VERSION = '0.0.1dev10' 
 PACKAGE_NAME = 'opta_read'  
 AUTHOR = 'Felix Suarez' 
 # AUTHOR_EMAIL = 'fsuarezc10@gmail.com' 

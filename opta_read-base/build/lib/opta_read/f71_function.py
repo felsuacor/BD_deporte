@@ -1,5 +1,5 @@
 
-from opta_read.auxiliares.f71_aux_funct import defensive_stats_funct
+from opta_read._auxiliares.f71_aux_funct import defensive_stats_funct
 
 class F71:
 
