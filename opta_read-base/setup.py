@@ -3,10 +3,9 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.1dev10' 
+VERSION = '0.0.1dev13' 
 PACKAGE_NAME = 'opta_read'  
-AUTHOR = 'Felix Suarez' 
-# AUTHOR_EMAIL = 'fsuarezc10@gmail.com' 
+AUTHOR = 'Felix Suarez'  
 URL = 'https://github.com/felsuacor/BD_deporte' 
 
 LICENSE = 'MIT' #Tipo de licencia

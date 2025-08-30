@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from sklearn.preprocessing import MinMaxScaler
 import os
-
+import IPython as ip
     
 
 def compare_players(df, players, stats, color_player_1, color_player_2):
@@ -56,9 +56,27 @@ def compare_players(df, players, stats, color_player_1, color_player_2):
             visible=True
         ))
     )
+    if is_jupyter()==False and is_google_colab()==False:
+        fig.write_html("plots/my_plot.html")
+        import webbrowser
 
-    fig.write_html("plots/my_plot.html")
-    import webbrowser
+        file_path = os.path.abspath("plots/my_plot.html")
+        webbrowser.open(f"file://{file_path}")
+    else:
+        fig.show()
 
-    file_path = os.path.abspath("plots/my_plot.html")
-    webbrowser.open(f"file://{file_path}")
+
+def is_jupyter():
+    try:
+        shell = ip.get_ipython().__class__.__name__
+        return shell == 'ZMQInteractiveShell'  # Jupyter Notebook or JupyterLab
+    except NameError:
+        return False  # Standard Python interpreter
+
+def is_google_colab():
+    try:
+        import google.colab
+        return True
+    except ImportError:
+        return False
+
