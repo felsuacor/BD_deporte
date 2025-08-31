@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.1dev13' 
+VERSION = '0.0.1dev19' 
 PACKAGE_NAME = 'opta_read'  
 AUTHOR = 'Felix Suarez'  
 URL = 'https://github.com/felsuacor/BD_deporte' 

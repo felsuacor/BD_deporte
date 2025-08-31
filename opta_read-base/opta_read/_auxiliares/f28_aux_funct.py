@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 from typing import Literal
+from IPython.display import HTML
+import IPython as ip
 
 from opta_read._auxiliares.opta_pitch import *
 import matplotlib.animation as animation
@@ -33,7 +35,13 @@ def pitch_possesion_evolution(df, color_team1="green", color_team2="blue", anima
 
     ax.get_yaxis().set_visible(False)
 
-    if animated==False:
+    
+    if is_jupyter() or is_google_colab():
+        animated_mod=False 
+    else:
+        animated_mod=animated
+
+    if animated_mod==False:
 
         rect1 = patches.Rectangle((0, 0), np.mean(l1), 100, linewidth=1, edgecolor=color_team1, facecolor=color_team1, alpha=0.3)
         rect2 = patches.Rectangle((np.mean(l1), 0), np.mean(l2), 100, linewidth=1, edgecolor=color_team2, facecolor=color_team2, alpha=0.3)
@@ -90,7 +98,7 @@ def pitch_possesion_evolution(df, color_team1="green", color_team2="blue", anima
 
 
         ani = animation.FuncAnimation(fig=fig, func=update, frames=len(t), interval=2000, repeat_delay=4000)
-
+        # HTML(ani.to_jshtml())
     plt.show()
 
 def line_possesion_evolution(df, color_team1="orange",color_team2="blue"):
@@ -117,3 +125,17 @@ def line_possesion_evolution(df, color_team1="orange",color_team2="blue"):
     
     
     plt.show()
+
+def is_jupyter():
+    try:
+        shell = ip.get_ipython().__class__.__name__
+        return shell == 'ZMQInteractiveShell'  # Jupyter Notebook or JupyterLab
+    except NameError:
+        return False  # Standard Python interpreter
+
+def is_google_colab():
+    try:
+        import google.colab
+        return True
+    except ImportError:
+        return False
